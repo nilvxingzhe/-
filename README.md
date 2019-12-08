@@ -47,6 +47,7 @@ public Student(int id, String name, String sex, Course course,Teacher teacher) {
 ```
     4.编写Course类
     声明变量，Course类重写toString（）方法。使用toString() 方法将“"课程号:"+number+","+"课程名称:"+title+","+"上课地点:"+coursesaddress+","+"上课时间:"+time+","+"学分:"+credit;”转为字符串返回结果。
+    2.利用WILE和IF语句使文件数据每行与
     5.测试类
     将Teacher、Student、Course实例化，打印学生选课信息，打印老师对应的课程信息，退课，打印退课后的信息。
 ```java
@@ -72,15 +73,43 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.*;
 ```
-    3. 创建监听事件
+    3. 创建监听事件，定义j2为监听对象，定义J3为事件源；
+## 文件输入输出    
+    1.声明文件流属性，定义缓存器
+    2.利用WHILE和IF语句使文件数据每行与姓名、课程对比，相等跳入下行，不等输入文件，并保存文件。
 ```java
+try{
+                        String namet=j7.getText();
+                        j9.setText("学生"+ namet+" 的课程《 " +course.gettitle() +" 》 已成功退课！");
+
+						huancun = new StringBuffer(4096);
+						str = null;
+						duqu = new BufferedReader(new FileReader(file)); 
+						while((str = duqu.readLine())!= null){ 
+						       if (!str.contains(namet)) {
+						    	   huancun.append(str).append("\r\n");
+							}       
+						} 
+						duqu.close(); 
+						xieru2 = new BufferedWriter((new FileWriter(file)));
+						xieru2.write(huancun.toString());
+						xieru2.close();
+					} catch (NullPointerException en){
+                        System.out.println("字符串为空，注意检查！" + en);
+                    } catch (IOException e1) {
+						System.out.println("文件传输错误");
+					}
+				}
 ```
-## 文件输入输出
-    了解实验要求，设计GUI界面。
 ```java
-try{}
-catch (Exception e) {							//异常处理 
-e.printStackTrace();}}
+try {
+      		xieru1=new FileWriter(file,true);
+      		xieru1.write("  "+student.getName()+ "  "+student.getCourse() +" "+ "老师姓名:"+student.getTeather()+"\n");
+      		xieru1.flush();
+      		xieru1.close();
+		} catch (IOException e2) {
+				System.out.println("文件传输错误");
+		}
 ```
 # 四、流程图
 ![image](https://github.com/nilvxingzhe/-/blob/master/流程图%20(1).jpg)
@@ -93,4 +122,4 @@ e.printStackTrace();}}
 ![image](https://github.com/nilvxingzhe/-/blob/master/运行%20(3).png)
 ![image](https://github.com/nilvxingzhe/-/blob/master/运行%20(4).png)
 # 六、编程感想
-通过本次Java编程实验课，让我熟练的掌握了字符串String，length（）、charAt()、toCharArray()等方法。掌握异常处理结构，并且自己构造了异常处理。理解了程序中的逻辑关系。还复习了for循环和if的运用。在实验中我发现自己程序中的不足，通过网络和老师的帮助使我更好的改进了自己的程序，这次实验跟让我了解了自己的不足，我会在课下补足自己知识的盲点勤加练习，为之后的编程打下坚实的基础。
+     通过本次Java编程实验课，令我回顾了如何使用GUI窗体及其组件设计窗体界面与事件结构的要点。使我熟练的掌握了监听器、事件结构、JFrame类的常用方法和JComponent类组件。使我学会了如何基于文件保存并读取数据。令我熟练的掌握了异常处理的try，catch方法。使我深刻的理解了程序中的逻辑关系。在实验中我发现自己程序中的不足，通过老师和同学的帮助让我更好更快的改进了自己的程序。虽然这次实验有很大的难度，但是这次实验使我清楚的认识的自己对所学知识的掌握情况，对我复习备考有很大的帮助。
