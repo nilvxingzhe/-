@@ -32,18 +32,20 @@ public String toString(){
 public Student(int id, String name, String sex, Course course,Teacher teacher) {
 		super(id, name, sex);
 		this.course=course;
-```java		this.teacher=teacher;}
+        	this.teacher=teacher;}
 
 		public void putcourse(){
-		if(course == null){
-			System.out.println("未选科");
+		try{
+			if(course == null){
+				System.out.println("未选科");
+			}
+			else{
+				this.toString();
+			}
+		} catch (NullPointerException encourse){
+			System.out.println("没有选课" + encourse);
 		}
-		else{
-			this.toString();
-		}}
-
-		public Course delete(){
-			return course = null;}
+	}
 ```
     4.编写Course类
     声明变量，Course类重写toString（）方法。使用toString() 方法将“"课程号:"+number+","+"课程名称:"+title+","+"上课地点:"+coursesaddress+","+"上课时间:"+time+","+"学分:"+credit;”转为字符串返回结果。
